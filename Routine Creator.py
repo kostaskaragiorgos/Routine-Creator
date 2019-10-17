@@ -16,7 +16,8 @@ class Routine_Creator():
         if os.path.exists("Routine") == False:
             os.mkdir("Routine")
             os.chdir("Routine")
-        os.chdir("Routine")
+        else:
+            os.chdir("Routine")
         self.menu = Menu(self.master)
         self.file_menu = Menu(self.menu,tearoff = 0)
         self.file_menu.add_command(label = "Create Routine",accelerator = 'Ctrl+O',command = self.creater)
