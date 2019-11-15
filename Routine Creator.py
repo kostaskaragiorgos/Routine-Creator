@@ -73,7 +73,7 @@ class Routine_Creator():
             with open(str(createrou)+str(".csv"), 'a+') as f:
                 thewriter = csv.writer(f)
                 thewriter.writerow(['TO DO'])
-                f.close()
+
         else:
             flagexists = 1
             msg.showerror("Error","This routine exists")
@@ -85,7 +85,7 @@ class Routine_Creator():
                 with open(str(createrou)+str(".csv"), 'a+') as d:
                     thewriter = csv.writer(d)
                     thewriter.writerow(['TO DO'])
-                    d.close()
+
                 flagexists  = 0
         root1 = Toplevel()
         creategui = Createl(root1)
@@ -214,7 +214,7 @@ class Createl():
         with open(str(createrou)+str(".csv"), 'a+') as o:
             thewriter = csv.writer(o)
             thewriter.writerow([self.texten.get()])
-            o.close()
+
     
     def cans(self):
         global createrou
@@ -368,7 +368,7 @@ class Loader():
         with open(str(createrou)+str(".csv"), 'a+') as t:
             thewriter = csv.writer(t)
             thewriter.writerow([self.texten.get()])
-            t.close()
+
     
     def cans(self):
         global createrou
