@@ -10,3 +10,15 @@
 **Current Version**
 
 <p><img src ="Routine Creator.png" title = "Routine Creator Version"/> </p>
+
+
+## Keybinds 
+
+ <ul>
+  <li>Create Routine(Ctrl+O) </li>
+  <li>Load Routine(Ctrl+L) </li>
+  <li>Delete Routine(Ctrl+D) </li>
+  <li>Exit(Alt+F4) </li>
+  <li>About(Ctrl+I) </li>
+  <li>Help(Ctrl+F1) </li>
+</ul>
