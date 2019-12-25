@@ -1,5 +1,12 @@
 # Routine-Creator
 
+## FILES 
+<ul> 
+ <li> Routine Creator.png (routine creator version ) </li>
+ <li> Routine Creator.py (the python file ) </li>
+ <li> routine creator keybinds.txt (keybinds file ) </li>
+</ul>
+
 ## Dependencies
 
  <ul>
