@@ -73,6 +73,7 @@ class Routine_Creator():
             with open(str(createrou)+str(".csv"), 'a+') as f:
                 thewriter = csv.writer(f)
                 thewriter.writerow(['TO DO'])
+            msg.showinfo("SUCCESS" , "ROUTINE SUCCESSFULLY CREATED")
 
         else:
             flagexists = 1
@@ -214,6 +215,8 @@ class Createl():
         with open(str(createrou)+str(".csv"), 'a+') as o:
             thewriter = csv.writer(o)
             thewriter.writerow([self.texten.get()])
+        self.texten.delete(0,END)
+        msg.showinfo("SUCCESS","TO DO SUCCESSFULLY CREATED")
 
     
     def cans(self):
@@ -295,6 +298,7 @@ class Loadlist():
         msg.showinfo("About","About \nVersion 1.0")
         
     def load(self):
+        msg.showinfo("SUCCESS","TO DO SUCCESSFULLY LOADED")
         root5 = Toplevel()
         loader = Loader(root5)
         
