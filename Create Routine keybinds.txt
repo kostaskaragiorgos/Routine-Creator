@@ -1,0 +1,20 @@
+File menu
+=======================
+Insert Alt + I
+Cancel Alt + C
+Clear Ctrl + C
+Ok Ctrl + O
+Exit Alt + F4
+===============
+Show
+====================
+Show Routine Alt + O
+====================
+About menu
+==============
+About Ctrl + I
+==============
+Help menu 
+==============
+Help Ctrl + F1
+==============
