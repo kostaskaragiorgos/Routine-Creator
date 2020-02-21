@@ -1,8 +1,12 @@
+"""
+helps you to keep track of your routine
+"""
 from tkinter import Menu, Button, Toplevel, Tk, simpledialog, messagebox as msg, StringVar, OptionMenu, END, Entry
 import os 
 import csv
 import pandas as pd
 class Routine_Creator():
+    """ Routine Creator Class"""
     def __init__(self, master):
         self.master = master
         self.master.title("Routine Creator")
@@ -138,44 +142,43 @@ class Delete():
             
     
     def helpmenu(self):
-        msg.showinfo("Help","Here you can delete the routine files")
+        msg.showinfo("Help", "Here you can delete the routine files")
     
     def aboutmenu(self):
-        msg.showinfo("About","About \nVersion 1.0")
+        msg.showinfo("About", "About \nVersion 1.0")
         
 class Createl():
-    def __init__(self,master):
+    def __init__(self, master):
         self.master = master
         self.master.geometry("250x150")
         self.master.title("Create List")
-        self.master.resizable(False,False)
-        self.texten = Entry(self.master,font = "Arial 24")
+        self.master.resizable(False, False)
+        self.texten = Entry(self.master, font="Arial 24")
         self.texten.pack()
-        self.insertb = Button(self.master,text = "INSERT",command = self.ins)
+        self.insertb = Button(self.master, text = "INSERT",command = self.ins)
         self.insertb.pack()
-        self.cancelb = Button(self.master,text = "CANCEL",command =self.cans)
+        self.cancelb = Button(self.master, text = "CANCEL",command =self.cans)
         self.cancelb.pack()
-        self.clearb = Button(self.master,text = "CLEAR",command = self.clearfun)
+        self.clearb = Button(self.master, text = "CLEAR",command = self.clearfun)
         self.clearb.pack()
         self.okb = Button(self.master,text = "OK",command = self.okbff)
         self.okb.pack()
         
         self.menu = Menu(self.master)
-        self.file_menu = Menu(self.menu,tearoff = 0)
-        self.file_menu.add_command(label = "Insert",accelerator = 'Alt+I',command = self.ins)
-        self.file_menu.add_command(label = "Cancel",accelerator = 'Alt+C', command = self.cans)
-        self.file_menu.add_command(label = "Clear",accelerator = 'Ctrl+C', command = self.clearfun)
-        self.file_menu.add_command(label = "Ok" ,accelerator = 'Ctrl+O', command = self.okbff)
-        self.file_menu.add_command(label="Exit",accelerator= 'Alt+F4',command = self.exitmenu)
-        self.menu.add_cascade(label = "File",menu=self.file_menu)
+        self.file_menu = Menu(self.menu, tearoff=0)
+        self.file_menu.add_command(label = "Insert", accelerator='Alt+I', command=self.ins)
+        self.file_menu.add_command(label = "Cancel", accelerator='Alt+C', command=self.cans)
+        self.file_menu.add_command(label = "Clear", accelerator='Ctrl+C', command=self.clearfun)
+        self.file_menu.add_command(label = "Ok", accelerator='Ctrl+O', command=self.okbff)
+        self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
+        self.menu.add_cascade(label = "File", menu=self.file_menu)
         
-        self.showroutinem = Menu(self.menu,tearoff = 0)
-        self.showroutinem.add_command(label = "Show Routine",accelerator = 'Alt+O',command = self.showroutine)
-        self.menu.add_cascade(label = "Show",menu = self.showroutinem)
-        
-        self.about_menu = Menu(self.menu,tearoff = 0)
-        self.about_menu.add_command(label = "About",accelerator= 'Ctrl+I',command=self.aboutmenu)
-        self.menu.add_cascade(label="About",menu=self.about_menu)
+        self.showroutinem = Menu(self.menu, tearoff=0)
+        self.showroutinem.add_command(label="Show Routine", accelerator='Alt+O', command=self.showroutine)
+        self.menu.add_cascade(label="Show", menu=self.showroutinem)
+        self.about_menu = Menu(self.menu, tearoff=0)
+        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=self.aboutmenu)
+        self.menu.add_cascade(label="About", menu=self.about_menu)
         
         self.help_menu = Menu(self.menu,tearoff = 0)
         self.help_menu.add_command(label = "Help",accelerator= 'Alt+F1',command=self.helpmenu)
@@ -284,49 +287,47 @@ class Loadlist():
     def load(self):
         msg.showinfo("SUCCESS","TO DO SUCCESSFULLY LOADED")
         root5 = Toplevel()
-        loader = Loader(root5)
+        Loader(root5)
         
         
 class Loader():
-    def __init__(self,master):
+    def __init__(self, master):
         self.master = master
         self.master.geometry("250x150")
         self.master.title("Loader")
-        self.master.resizable(False,False)
+        self.master.resizable(False, False)
         
-        self.texten = Entry(self.master,font = "Arial 24")
+        self.texten = Entry(self.master, font = "Arial 24")
         self.texten.pack()
-        self.insertb = Button(self.master,text = "INSERT",command = self.ins)
+        self.insertb = Button(self.master, text="INSERT", command=self.ins)
         self.insertb.pack()
-        self.cancelb = Button(self.master,text = "CANCEL",command =self.cans)
+        self.cancelb = Button(self.master, text="CANCEL", command=self.cans)
         self.cancelb.pack()
-        self.clearb = Button(self.master,text = "CLEAR",command = self.clearfun)
+        self.clearb = Button(self.master, text="CLEAR", command=self.clearfun)
         self.clearb.pack()
-        self.okb = Button(self.master,text = "OK",command = self.okb)
+        self.okb = Button(self.master, text="OK", command = self.okbf)
         self.okb.pack()
         
         
         self.menu = Menu(self.master)
-        self.file_menu = Menu(self.menu,tearoff = 0)
-        self.file_menu.add_command(label = "Insert",accelerator = 'Alt+I',command = self.ins)
-        self.file_menu.add_command(label = "Cancel",accelerator = 'Alt+C', command = self.cans)
-        self.file_menu.add_command(label = "Clear",accelerator = 'Ctrl+C', command = self.clearfun)
-        self.file_menu.add_command(label = "Ok" ,accelerator = 'Ctrl+O', command = self.okbf)
-        self.file_menu.add_command(label="Exit",accelerator= 'Alt+F4',command = self.exitmenu)
-        self.menu.add_cascade(label = "File",menu=self.file_menu)
+        self.file_menu = Menu(self.menu, tearoff=0)
+        self.file_menu.add_command(label = "Insert", accelerator='Alt+I', command = self.ins)
+        self.file_menu.add_command(label = "Cancel", accelerator = 'Alt+C', command = self.cans)
+        self.file_menu.add_command(label = "Clear", accelerator = 'Ctrl+C', command = self.clearfun)
+        self.file_menu.add_command(label = "Ok", accelerator = 'Ctrl+O', command = self.okbf)
+        self.file_menu.add_command(label="Exit", accelerator= 'Alt+F4',command = self.exitmenu)
+        self.menu.add_cascade(label = "File", menu=self.file_menu)
         
-        self.showroutinem = Menu(self.menu,tearoff = 0)
-        self.showroutinem.add_command(label = "Show Routine",accelerator = 'Alt+O',command = self.showroutine)
-        self.menu.add_cascade(label = "Show",menu = self.showroutinem)
+        self.showroutinem = Menu(self.menu, tearoff=0)
+        self.showroutinem.add_command(label="Show Routine", accelerator='Alt+O', command=self.showroutine)
+        self.menu.add_cascade(label="Show", menu=self.showroutinem)
         
-        self.about_menu = Menu(self.menu,tearoff = 0)
-        self.about_menu.add_command(label = "About",accelerator= 'Ctrl+I',command=self.aboutmenu)
-        self.menu.add_cascade(label="About",menu=self.about_menu)
-        
-        self.help_menu = Menu(self.menu,tearoff = 0)
-        self.help_menu.add_command(label = "Help",accelerator= 'Alt+F1',command=self.helpmenu)
-        self.menu.add_cascade(label="Help",menu=self.help_menu)
-        
+        self.about_menu = Menu(self.menu, tearoff=0)
+        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=self.aboutmenu)
+        self.menu.add_cascade(label="About", menu=self.about_menu)
+        self.help_menu = Menu(self.menu, tearoff=0)
+        self.help_menu.add_command(label="Help", accelerator='Alt+F1', command=self.helpmenu)
+        self.menu.add_cascade(label="Help", menu=self.help_menu)
         self.master.config(menu=self.menu)
         
         self.master.bind('<Alt-i>', lambda evnet: self.ins())
@@ -338,11 +339,11 @@ class Loader():
         self.master.bind('<Control-i>', lambda event: self.aboutmenu())
         self.master.bind('<Alt-o>', lambda event: self.showroutine())
     def aboutmenu(self):
-        msg.showinfo("About","About \nVersion 1.0")
+        msg.showinfo("About", "About \nVersion 1.0")
     def helpmenu(self):
-        msg.showinfo('Help','Loads a routine file')
+        msg.showinfo('Help', 'Loads a routine file')
     def clearfun(self):
-        self.texten.delete(0,END)
+        self.texten.delete(0, END)
     def ins(self):
         global createrou
         creatorou = flist.get()
@@ -363,11 +364,12 @@ class Loader():
             self.master.destroy()
     def showroutine(self):
         df = pd.read_csv(str(createrou)+str(".csv"))
-        msg.showinfo("ROUTINE",str(df))
+        msg.showinfo("ROUTINE", str(df))
 def main():
+    """ main function """
     root=Tk()
     Routine_Creator(root)
     root.mainloop()
     
-if __name__=='__main__':
+if __name__ == '__main__':
     main()
