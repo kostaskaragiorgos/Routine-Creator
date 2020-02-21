@@ -83,13 +83,13 @@ class Routine_Creator():
                     thewriter.writerow(['TO DO'])
                 flagexists  = 0
         root1 = Toplevel()
-        creategui = Createl(root1)
+        Createl(root1)
     def loadf(self):
         root2 = Toplevel()
-        loadgui = Loadlist(root2)
+        Loadlist(root2)
     def delf(self):
         root3 = Toplevel()
-        delgui = Delete(root3)
+        Delete(root3)
 class Delete():
     def __init__(self, master):
         self.master = master
@@ -157,7 +157,7 @@ class Createl():
         self.cancelb.pack()
         self.clearb = Button(self.master,text = "CLEAR",command = self.clearfun)
         self.clearb.pack()
-        self.okb = Button(self.master,text = "OK",command = self.okb)
+        self.okb = Button(self.master,text = "OK",command = self.okbff)
         self.okb.pack()
         
         self.menu = Menu(self.master)
@@ -165,7 +165,7 @@ class Createl():
         self.file_menu.add_command(label = "Insert",accelerator = 'Alt+I',command = self.ins)
         self.file_menu.add_command(label = "Cancel",accelerator = 'Alt+C', command = self.cans)
         self.file_menu.add_command(label = "Clear",accelerator = 'Ctrl+C', command = self.clearfun)
-        self.file_menu.add_command(label = "Ok" ,accelerator = 'Ctrl+O', command = self.okb)
+        self.file_menu.add_command(label = "Ok" ,accelerator = 'Ctrl+O', command = self.okbff)
         self.file_menu.add_command(label="Exit",accelerator= 'Alt+F4',command = self.exitmenu)
         self.menu.add_cascade(label = "File",menu=self.file_menu)
         
@@ -182,14 +182,14 @@ class Createl():
         self.menu.add_cascade(label="Help",menu=self.help_menu)
         
         self.master.config(menu=self.menu)
-        self.master.bind('<Alt-i>', lambda evnet:self.ins())
-        self.master.bind('<Alt-c>',lambda event:self.cans())
-        self.master.bind('<Control-c>',lambda event:self.clearfun())
-        self.master.bind('<Control-o>',lambda event:self.okb())
-        self.master.bind('<Alt-F4>',lambda event: self.exitmenu())
-        self.master.bind('<Control-F1>',lambda event: self.helpmenu())
-        self.master.bind('<Control-i>',lambda event:self.aboutmenu())
-        self.master.bind('<Alt-o>',lambda event:self.showroutine())
+        self.master.bind('<Alt-i>', lambda evnet: self.ins())
+        self.master.bind('<Alt-c>', lambda event: self.cans())
+        self.master.bind('<Control-c>', lambda event: self.clearfun())
+        self.master.bind('<Control-o>', lambda event: self.okbff())
+        self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
+        self.master.bind('<Control-F1>', lambda event: self.helpmenu())
+        self.master.bind('<Control-i>', lambda event: self.aboutmenu())
+        self.master.bind('<Alt-o>', lambda event: self.showroutine())
         
     def clearfun(self):
         self.texten.delete(0,END)
@@ -209,7 +209,7 @@ class Createl():
             os.remove(str(createrou)+str('.csv'))
             self.master.destroy()
         
-    def okb(self):
+    def okbff(self):
         msg.showinfo("SAVE", "THE ROUTINE HAS SUCCESSFULLY SAVED")
         self.master.destroy()
     
@@ -311,7 +311,7 @@ class Loader():
         self.file_menu.add_command(label = "Insert",accelerator = 'Alt+I',command = self.ins)
         self.file_menu.add_command(label = "Cancel",accelerator = 'Alt+C', command = self.cans)
         self.file_menu.add_command(label = "Clear",accelerator = 'Ctrl+C', command = self.clearfun)
-        self.file_menu.add_command(label = "Ok" ,accelerator = 'Ctrl+O', command = self.okb)
+        self.file_menu.add_command(label = "Ok" ,accelerator = 'Ctrl+O', command = self.okbf)
         self.file_menu.add_command(label="Exit",accelerator= 'Alt+F4',command = self.exitmenu)
         self.menu.add_cascade(label = "File",menu=self.file_menu)
         
@@ -332,7 +332,7 @@ class Loader():
         self.master.bind('<Alt-i>', lambda evnet: self.ins())
         self.master.bind('<Alt-c>', lambda event: self.cans())
         self.master.bind('<Control-c>', lambda event: self.clearfun())
-        self.master.bind('<Control-o>', lambda event: self.okb())
+        self.master.bind('<Control-o>', lambda event: self.okbf())
         self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
         self.master.bind('<Control-F1>', lambda event: self.helpmenu())
         self.master.bind('<Control-i>', lambda event: self.aboutmenu())
@@ -355,7 +355,7 @@ class Loader():
         if msg.askyesno("Cancel", "IF YOU CANCEL YOUR ROUTINE IS GOING TO BE DELETED") == True:
             os.remove(str(createrou)+str('.csv'))
             self.master.destroy()
-    def okb(self):
+    def okbf(self):
         msg.showinfo("SAVE", "THE ROUTINE HAS SUCCESSFULLY SAVED")
         self.master.destroy()
     def exitmenu(self):
