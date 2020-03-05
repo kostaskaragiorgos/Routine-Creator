@@ -307,8 +307,6 @@ class Loader():
         self.clearb.pack()
         self.okb = Button(self.master, text="OK", command = self.okbf)
         self.okb.pack()
-        
-        
         self.menu = Menu(self.master)
         self.file_menu = Menu(self.menu, tearoff=0)
         self.file_menu.add_command(label = "Insert", accelerator='Alt+I', command = self.ins)
