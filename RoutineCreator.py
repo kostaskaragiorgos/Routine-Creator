@@ -12,7 +12,7 @@ class Routine_Creator():
         self.master.title("Routine Creator")
         self.master.geometry("250x120")
         self.master.resizable(False, False)
-        if os.path.exists("Routine") == False:
+        if not os.path.exists("Routine"):
             os.mkdir("Routine")
             os.chdir("Routine")
         else:
@@ -81,7 +81,7 @@ class Routine_Creator():
             createrou = simpledialog.askstring("NEW ROUTINE", "Enter the name of the new routine", parent = self.master)
             while createrou == None:
                 createrou = simpledialog.askstring("NEW ROUTINE", "Enter the name of the new routine", parent = self.master)
-            if os.path.exists(createrou+str(".csv")) == False:
+            if not os.path.exists(createrou+str(".csv")):
                 with open(str(createrou)+str(".csv"), 'a+') as d:
                     thewriter = csv.writer(d)
                     thewriter.writerow(['TO DO'])
@@ -120,7 +120,7 @@ class Delete():
         self.master.bind('<Control-F1>', lambda event: self.helpmenu())
         self.master.bind('<Control-i>', lambda event: self.aboutmenu()) 
         f = os.listdir()
-        if f == []:
+        if not f:
             msg.showerror("ERROR", "NO ROUTINE")
             self.master.destroy()
         else:
@@ -261,7 +261,7 @@ class Loadlist():
         
         global flist
         f = os.listdir()
-        if f  == []:
+        if not f:
             msg.showerror("ERROR", "THERE IS NO ROUTINE")
             self.master.destroy()
         else:
