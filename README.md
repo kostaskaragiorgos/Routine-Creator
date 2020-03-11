@@ -2,6 +2,17 @@
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
 
+# Table of contents
+
+<!--ts-->
+  * [Routine-Creator](#Routine-Creator)
+  * [Table of contents](#Table_of_contents)
+  * [FILES](#FILES)
+  * [Dependencies](#Dependencies)
+  * [Current Version](#Current_Version)
+  * [Keybinds](#Keybinds)
+  * [License](#License)
+<!--ts-->
 
 ## FILES 
 <ul> 
@@ -19,7 +30,7 @@
   <li> second way to install pandas (pip install pandas) </li>
 </ul>
 
-**Current Version**
+## Current Version
 
 <p><img src ="Routine Creator.png" title = "Routine Creator Version"/> </p>
 
