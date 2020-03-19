@@ -7,14 +7,14 @@
 <!--ts-->
   * [Routine-Creator](#Routine-Creator)
   * [Table of contents](#Table_of_contents)
-  * [FILES](#FILES)
+  * [Files](#Files)
   * [Dependencies](#Dependencies)
   * [Current Version](#Current_Version)
   * [Keybinds](#Keybinds)
   * [License](#License)
 <!--ts-->
 
-## FILES 
+## Files
 <ul> 
  <li> Routine Creator.png (routine creator version ) </li>
  <li> Routine Creator.py (the python file ) </li>
