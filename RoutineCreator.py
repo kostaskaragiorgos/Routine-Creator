@@ -328,7 +328,7 @@ class Loader():
         msg.showinfo("ROUTINE", str(df))
 def main():
     """ main function """
-    root=Tk()
+    root = Tk()
     Routine_Creator(root)
     root.mainloop()
     
