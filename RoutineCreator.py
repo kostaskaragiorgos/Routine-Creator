@@ -61,22 +61,24 @@ class Routine_Creator():
     
     def aboutmenu(self):
         msg.showinfo("About", "About \nVersion 1.0")
-    
-    def creater(self):
+    def check_routine_existence(self):
         flagexists = 0
         global createrou
         createrou = simpledialog.askstring("NEW ROUTINE", "Enter the name of the new routine", parent=self.master)
         while createrou == None:
             createrou = simpledialog.askstring("NEW ROUTINE", "Enter the name of the new routine", parent=self.master)
-        if os.path.exists(str(createrou)+str(".csv")) == False:
+        if not os.path.exists(str(createrou)+str(".csv")):
             with open(str(createrou)+str(".csv"), 'a+') as f:
                 thewriter = csv.writer(f)
                 thewriter.writerow(['TO DO'])
             msg.showinfo("SUCCESS", "ROUTINE SUCCESSFULLY CREATED")
-
         else:
             flagexists = 1
             msg.showerror("Error", "This routine exists")
+        return flagexists
+    
+    def creater(self):
+        flagexists = self.check_routine_existence()
         while flagexists == 1:
             createrou = simpledialog.askstring("NEW ROUTINE", "Enter the name of the new routine", parent=self.master)
             while createrou == None:
