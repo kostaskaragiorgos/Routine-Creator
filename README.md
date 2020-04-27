@@ -10,6 +10,11 @@
   * [Files](#Files)
   * [Dependencies](#Dependencies)
   * [Current Version](#Current_Version)
+  * [Radon](#Radon)
+    * [Radon_cc](#Radon_cc)
+    * [Radon_hal](#Radon_hal)
+    * [Radon_mi](#Radon_mi)
+    * [Radon_raw](#Radon_raw)
   * [Keybinds](#Keybinds)
   * [License](#License)
 <!--ts-->
@@ -30,10 +35,27 @@
   <li> second way to install pandas (pip install pandas) </li>
 </ul>
 
-## Current Version
+## Current_Version
 
 <p><img src ="images/Routine Creator.png" title = "Routine Creator Version"/> </p>
 
+## Radon 
+
+### Radon_cc
+
+<p><img src="images/Routine Creator radon cc.png" title="Routine Creator Radon cc"/></p>
+
+### Radon_hal
+
+<p><img src="images/Routine Creator radon hal.png" title="Routine Creator Radon hal"/></p>
+
+### Radon_mi
+
+<p><img src="images/Routine Creator radon mi.png" title="Routine Creator Radon mi"/></p>
+
+### Radon_raw
+
+<p><img src="images/Routine Creator radon raw.png" title="Routine Creator Radon raw"/></p>
 
 ## Keybinds 
 
