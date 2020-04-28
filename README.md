@@ -21,7 +21,8 @@
 
 ## Files
 <ul> 
- <li> Routine Creator.png (routine creator version ) </li>
+ <li> images (images folder) </li>
+ <li> keybinds (keybinds folder) </li>
  <li> Routine Creator.py (the python file ) </li>
  <li> routine creator keybinds.txt (keybinds file ) </li>
 </ul>
@@ -59,15 +60,8 @@
 
 ## Keybinds 
 
- <ul>
-  <li>Create Routine(Ctrl+O) </li>
-  <li>Load Routine(Ctrl+L) </li>
-  <li>Delete Routine(Ctrl+D) </li>
-  <li>Exit(Alt+F4) </li>
-  <li>About(Ctrl+I) </li>
-  <li>Help(Ctrl+F1) </li>
-</ul>
 
+All project keybinds are located in the `./keybinds`  folder.
 
 ## License
 [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
