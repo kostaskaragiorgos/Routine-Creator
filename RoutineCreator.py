@@ -5,6 +5,14 @@ from tkinter import Menu, Button, Toplevel, Tk, simpledialog, messagebox as msg,
 import os 
 import csv
 import pandas as pd
+def about_menu():
+    """ about menu function """
+    msg.showinfo("About", "About \nVersion 1.0")
+def createfolder(foldername):
+    """ creates a folder and sets it as the current directory """
+    if not os.path.exists(foldername):
+        os.mkdir(foldername)
+    os.chdir(foldername)
 class Routine_Creator():
     """ Routine Creator Class"""
     def __init__(self, master):
@@ -12,11 +20,7 @@ class Routine_Creator():
         self.master.title("Routine Creator")
         self.master.geometry("250x120")
         self.master.resizable(False, False)
-        if not os.path.exists("Routine"):
-            os.mkdir("Routine")
-            os.chdir("Routine")
-        else:
-            os.chdir("Routine")
+        createfolder("Routine")
         self.menu = Menu(self.master)
         self.file_menu = Menu(self.menu, tearoff=0)
         self.file_menu.add_command(label="Create Routine", accelerator='Ctrl+O', command=self.creater)
@@ -26,7 +30,7 @@ class Routine_Creator():
         self.menu.add_cascade(label="File", menu=self.file_menu)
         
         self.about_menu = Menu(self.menu, tearoff=0)
-        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=self.aboutmenu)
+        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=about_menu)
         self.menu.add_cascade(label="About", menu=self.about_menu)
         
         self.help_menu = Menu(self.menu, tearoff=0)
@@ -36,7 +40,7 @@ class Routine_Creator():
         self.master.config(menu=self.menu)
         self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
         self.master.bind('<Control-F1>', lambda event: self.helpmenu())
-        self.master.bind('<Control-i>', lambda event: self.aboutmenu())
+        self.master.bind('<Control-i>', lambda event: about_menu())
         self.master.bind('<Control-o>', lambda event: self.creater())
         self.master.bind('<Control-l>', lambda event: self.loadf())
         self.master.bind('<Control-d>', lambda event: self.delf())
@@ -49,18 +53,12 @@ class Routine_Creator():
         
         self.deleteb = Button(self.master, text="DELETE A ROUTINE", command=self.delf)
         self.deleteb.pack()
-
-    
     def exitmenu(self):
+        """ exit menu function """
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
-            
-    
     def helpmenu(self):
         msg.showinfo("Help", "This is the main menu")
-    
-    def aboutmenu(self):
-        msg.showinfo("About", "About \nVersion 1.0")
     def check_routine_existence(self):
         flagexists = 0
         global createrou
@@ -110,7 +108,7 @@ class Delete():
         self.menu.add_cascade(label="File", menu=self.file_menu)
         
         self.about_menu = Menu(self.menu, tearoff=0)
-        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=self.aboutmenu)
+        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=about_menu)
         self.menu.add_cascade(label="About", menu=self.about_menu)
         
         self.help_menu = Menu(self.menu, tearoff=0)
@@ -120,7 +118,7 @@ class Delete():
         self.master.bind('<Alt-d>', lambda event: self.deletefile())
         self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
         self.master.bind('<Control-F1>', lambda event: self.helpmenu())
-        self.master.bind('<Control-i>', lambda event: self.aboutmenu()) 
+        self.master.bind('<Control-i>', lambda event: about_menu()) 
         f = os.listdir()
         if not f:
             msg.showerror("ERROR", "NO ROUTINE")
@@ -137,12 +135,11 @@ class Delete():
         msg.showinfo("SUCCESS", "THE "+str(self.flist.get())+ " ROUTINE FILE HAS SUCCESSFULLY DELETED")
         self.master.destroy()
     def exitmenu(self):
+        """ exit menu function """
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
     def helpmenu(self):
         msg.showinfo("Help", "Here you can delete the routine files")
-    def aboutmenu(self):
-        msg.showinfo("About", "About \nVersion 1.0")
 class Createl():
     def __init__(self, master):
         self.master = master
@@ -171,8 +168,8 @@ class Createl():
         self.showroutinem.add_command(label="Show Routine", accelerator='Alt+O', command=self.showroutine)
         self.menu.add_cascade(label="Show", menu=self.showroutinem)
         self.about_menu = Menu(self.menu, tearoff=0)
-        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=self.aboutmenu)
-        self.menu.add_cascade(label="About", menu=self.about_menu)
+        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=about_menu)
+        self.menu.add_cascade(label="About", menu=about_menu)
         self.help_menu = Menu(self.menu, tearoff=0)
         self.help_menu.add_command(label="Help", accelerator='Alt+F1', command=self.helpmenu)
         self.menu.add_cascade(label="Help", menu=self.help_menu)
@@ -183,7 +180,7 @@ class Createl():
         self.master.bind('<Control-o>', lambda event: self.okbff())
         self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
         self.master.bind('<Control-F1>', lambda event: self.helpmenu())
-        self.master.bind('<Control-i>', lambda event: self.aboutmenu())
+        self.master.bind('<Control-i>', lambda event: about_menu())
         self.master.bind('<Alt-o>', lambda event: self.showroutine())
     def clearfun(self):
         self.texten.delete(0, END)
@@ -203,12 +200,11 @@ class Createl():
         msg.showinfo("SAVE", "THE ROUTINE HAS SUCCESSFULLY SAVED")
         self.master.destroy()
     def exitmenu(self):
+        """ exit menu function """
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
     def helpmenu(self):
         msg.showinfo("Help", "Here you create routine")
-    def aboutmenu(self):
-        msg.showinfo("About", "About \nVersion 1.0")
     def showroutine(self):
         df = pd.read_csv(str(createrou)+str(".csv"))
         msg.showinfo("ROUTINE", str(df))
@@ -224,7 +220,7 @@ class Loadlist():
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
         self.about_menu = Menu(self.menu, tearoff=0)
-        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=self.aboutmenu)
+        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=about_menu)
         self.menu.add_cascade(label="About", menu=self.about_menu)
         self.help_menu = Menu(self.menu, tearoff=0)
         self.help_menu.add_command(label="Help", accelerator='Alt+F1', command=self.helpmenu)
@@ -233,7 +229,7 @@ class Loadlist():
         self.master.bind('<Control-l>', lambda event: self.load())
         self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
         self.master.bind('<Control-F1>', lambda event: self.helpmenu())
-        self.master.bind('<Control-i>', lambda event: self.aboutmenu())
+        self.master.bind('<Control-i>', lambda event: about_menu())
         global flist
         f = os.listdir()
         if not f:
@@ -247,12 +243,11 @@ class Loadlist():
             self.loadb = Button(self.master, text="LOAD", command=self.load)
             self.loadb.pack()
     def exitmenu(self):
+        """ exit menu function """
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
     def helpmenu(self):
         msg.showinfo("Help", "Here you can choose the routine you want to load")
-    def aboutmenu(self):
-        msg.showinfo("About", "About \nVersion 1.0")
         
     def load(self):
         msg.showinfo("SUCCESS", "TO DO SUCCESSFULLY LOADED")
@@ -286,7 +281,7 @@ class Loader():
         self.showroutinem.add_command(label="Show Routine", accelerator='Alt+O', command=self.showroutine)
         self.menu.add_cascade(label="Show", menu=self.showroutinem)
         self.about_menu = Menu(self.menu, tearoff=0)
-        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=self.aboutmenu)
+        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=about_menu)
         self.menu.add_cascade(label="About", menu=self.about_menu)
         self.help_menu = Menu(self.menu, tearoff=0)
         self.help_menu.add_command(label="Help", accelerator='Alt+F1', command=self.helpmenu)
@@ -299,10 +294,8 @@ class Loader():
         self.master.bind('<Control-o>', lambda event: self.okbf())
         self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
         self.master.bind('<Control-F1>', lambda event: self.helpmenu())
-        self.master.bind('<Control-i>', lambda event: self.aboutmenu())
+        self.master.bind('<Control-i>', lambda event: about_menu())
         self.master.bind('<Alt-o>', lambda event: self.showroutine())
-    def aboutmenu(self):
-        msg.showinfo("About", "About \nVersion 1.0")
     def helpmenu(self):
         msg.showinfo('Help', 'Loads a routine file')
     def clearfun(self):
@@ -316,13 +309,14 @@ class Loader():
     def cans(self):
         global createrou
         creatorou = flist.get()
-        if msg.askyesno("Cancel", "IF YOU CANCEL YOUR ROUTINE IS GOING TO BE DELETED") == True:
+        if msg.askyesno("Cancel", "IF YOU CANCEL YOUR ROUTINE IS GOING TO BE DELETED"):
             os.remove(str(createrou)+str('.csv'))
             self.master.destroy()
     def okbf(self):
         msg.showinfo("SAVE", "THE ROUTINE HAS SUCCESSFULLY SAVED")
         self.master.destroy()
     def exitmenu(self):
+        """ exit menu function """
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
     def showroutine(self):
